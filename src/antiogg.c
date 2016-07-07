@@ -11,8 +11,15 @@ extern int ov_open_callbacks(void *datasource, OggVorbis_File *vf, const char *i
     int ret = _ov_open_callbacks(datasource, vf, initial, ibytes, callbacks);
 
     long int size = ov_raw_total(vf, -1);
-    if (size == 55326) {
-        fputs("END\n", log);
+    switch (size) {
+        case 55326: // FX_Stereo_BlackTile_PlaceA.ogg
+            fputs("END\n", log);
+            break;
+        case 12423: // FX_ui_click.ogg
+            fputs("MAP\n", log);
+            break;
+        default:
+            break;
     }
     #ifdef DEBUG
     fprintf(log, "Ogg size: %ld\n", size);

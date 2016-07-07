@@ -1,0 +1,3 @@
+*.so
+*.exe # In case we *do* do something with windows...
+oggrawsize

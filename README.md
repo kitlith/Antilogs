@@ -1,6 +1,11 @@
 # Antilogs
 _Antichamber timer tools._
 
+## WARNING
+Apparently, if you run antichamber like this from the wrong directory, all the
+files in the current directory get deleted? Somehow? I was always running from
+the directory that the UDKGame-Linux binary was located in.
+
 ## What is this?
 At the moment, this is a series of tools meant to be preloaded using LD_PRELOAD
 while running Antichamber to provide logs useful for speedrun timers. Eventually, it may be expanded to cover Windows dll stuff.

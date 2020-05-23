@@ -2,12 +2,15 @@
 _Antichamber timer tools._
 
 ## WARNING
-Apparently, if you run antichamber like this from the wrong directory, all the
-files in the current directory get deleted? Somehow? I was always running from
-the directory that the UDKGame-Linux binary was located in.
+If you run Antichamber with an unexpected working directory:
+ - Antichamber will segfault and fail to start
+ - Antichamber will delete all the files in the current directory if any of them have content.
+   - Apparently, Antichamber is trying to clear its cache, and ends up thinking that the working directory is the cache folder...
+
+This is not the fault of Antilogs, and will occur even without its use.
 
 ## What is this?
-At the moment, this is a series of tools meant to be preloaded using LD_PRELOAD
+At the moment, this is a series of tools meant to be preloaded using LD\_PRELOAD
 while running Antichamber to provide logs useful for speedrun timers. Eventually, it may be expanded to cover Windows dll stuff.
 
 Currently, there is a method to detect the end of an any% run by using the raw,
@@ -18,7 +21,11 @@ file is also provided.
 
 ## Usage
 
-`LD_PRELOAD=/path/to/antiogg.so /path/to/Antichamber/Binaries/Linux/UDKGame-Linux`
+```
+pushd $HOME/.steam/steam/steamapps/common/Antichamber/Binaries/Linux/
+LD_PRELOAD=/path/to/antiogg.so ./UDKGame-Linux
+popd
+```
 
 ## Hacking
 I used `umodel` (available here: http://gildor.org/en/projects/umodel) to
